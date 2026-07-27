@@ -68,6 +68,14 @@ function Dashboard() {
         <p>Predictive Maintenance Platform</p>
       </header>
 
+      <div style={styles.bannerStyles}>
+        <img 
+          src="https://i.ibb.co/Qv9KSwrH/Chat-GPT-Image-Jul-27-2026-10-47-56-PM.png" 
+          alt="Banner" 
+          style={styles.bannerImageStyles}
+        />
+      </div>
+
       <div style={styles.content}>
         <div style={styles.selectorSection}>
           <label style={styles.label}>Select Machine:</label>
@@ -165,6 +173,17 @@ const styles = {
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
     border: '1px solid rgba(255, 255, 255, 0.2)'
   },
+  bannerStyles: {
+    width: '100%',
+    height: 'auto',
+    marginBottom: '20px'
+  },
+  bannerImageStyles: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    borderRadius: '8px'
+  },
   content: {
     maxWidth: '1400px',
     margin: '0 auto'
@@ -192,8 +211,7 @@ const styles = {
     border: '2px solid #e0e0e0',
     backgroundColor: '#f9f9f9',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    ':hover': { borderColor: '#1976d2' }
+    transition: 'all 0.3s ease'
   },
   machineInfo: {
     background: 'white',

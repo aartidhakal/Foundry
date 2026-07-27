@@ -26,13 +26,6 @@ function App() {
           <li><Link to="/helpline" style={linkStyles}>Helpline</Link></li>
         </ul>
       </nav>
-      <div style={bannerStyles}>
-        <img 
-          src="https://i.ibb.co/Qv9KSwrH/Chat-GPT-Image-Jul-27-2026-10-47-56-PM.png" 
-          alt="Banner" 
-          style={bannerImageStyles}
-        />
-      </div>
 
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -83,16 +76,6 @@ const linkStyles = {
   textDecoration: 'none',
   fontSize: '16px',
   cursor: 'pointer'
-};
-const bannerStyles = {
-  width: '100%',
-  height: 'auto',
-  overflow: 'hidden'
-};
 
-const bannerImageStyles = {
-  width: '100%',
-  height: 'auto',
-  display: 'block'
 };
 export default App;
