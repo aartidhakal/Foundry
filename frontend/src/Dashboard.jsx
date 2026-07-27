@@ -150,77 +150,94 @@ function Dashboard() {
 
 const styles = {
   container: {
-    fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#f5f5f5',
+    fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     minHeight: '100vh',
     padding: '20px'
   },
   header: {
-    backgroundColor: '#1976d2',
+    background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
     color: 'white',
-    padding: '30px',
-    borderRadius: '8px',
+    padding: '40px',
+    borderRadius: '12px',
     marginBottom: '30px',
-    textAlign: 'center'
+    textAlign: 'center',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+    border: '1px solid rgba(255, 255, 255, 0.2)'
   },
   content: {
-    maxWidth: '1200px',
+    maxWidth: '1400px',
     margin: '0 auto'
   },
   selectorSection: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    marginBottom: '20px'
+    background: 'white',
+    padding: '25px',
+    borderRadius: '12px',
+    marginBottom: '25px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
+    border: '1px solid #e0e0e0'
   },
   label: {
     display: 'block',
-    marginBottom: '10px',
-    fontWeight: 'bold'
+    marginBottom: '12px',
+    fontWeight: '600',
+    color: '#333',
+    fontSize: '16px'
   },
   select: {
     width: '100%',
-    padding: '10px',
+    padding: '12px 15px',
     fontSize: '16px',
-    borderRadius: '4px',
-    border: '1px solid #ddd'
+    borderRadius: '8px',
+    border: '2px solid #e0e0e0',
+    backgroundColor: '#f9f9f9',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    ':hover': { borderColor: '#1976d2' }
   },
   machineInfo: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    marginBottom: '20px'
+    background: 'white',
+    padding: '25px',
+    borderRadius: '12px',
+    marginBottom: '25px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
+    borderLeft: '5px solid #1976d2'
   },
   predictionCard: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    marginBottom: '20px',
+    background: 'white',
+    padding: '25px',
+    borderRadius: '12px',
+    marginBottom: '25px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)',
     borderLeft: '5px solid'
   },
   predictionBadge: {
     display: 'inline-block',
     color: 'white',
-    padding: '10px 20px',
-    borderRadius: '4px',
+    padding: '12px 24px',
+    borderRadius: '8px',
     fontWeight: 'bold',
-    marginBottom: '10px'
+    marginBottom: '15px',
+    fontSize: '18px',
+    letterSpacing: '0.5px'
   },
   chartSection: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    marginBottom: '20px'
+    background: 'white',
+    padding: '25px',
+    borderRadius: '12px',
+    marginBottom: '25px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)'
   },
   tableSection: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px'
+    background: 'white',
+    padding: '25px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)'
   },
   table: {
     width: '100%',
     borderCollapse: 'collapse',
-    marginTop: '10px'
+    marginTop: '15px'
   }
 };
 
