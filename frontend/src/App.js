@@ -10,7 +10,14 @@ function App() {
   return (
     <Router>
       <nav style={navStyles}>
-        <div style={logoStyles}>🏭 Manufacturing Analytics</div>
+        <div style={logoStyles}>
+          <img 
+            src="https://i.ibb.co/PzN4Bdq2/Professional-logo-design-for-Smart-Manufacturing-Analytics-P-1.jpg" 
+            alt="Logo" 
+            style={logoImageStyles} 
+          />
+          Manufacturing Analytics
+        </div>
         <ul style={navLinksStyles}>
           <li><Link to="/" style={linkStyles}>Dashboard</Link></li>
           <li><Link to="/machines" style={linkStyles}>All Machines</Link></li>
@@ -43,7 +50,17 @@ const navStyles = {
 
 const logoStyles = {
   fontSize: '24px',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px'
+};
+
+const logoImageStyles = {
+  height: '50px',
+  width: '50px',
+  borderRadius: '50%',
+  objectFit: 'cover'
 };
 
 const navLinksStyles = {
