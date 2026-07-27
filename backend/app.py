@@ -56,6 +56,67 @@ def get_maintenance():
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({'status': 'healthy', 'timestamp': datetime.now().isoformat()})
+# ML Prediction endpoint
+import pickle
 
+# Load model and scaler
+try:
+    with open('backend/model.pkl', 'rb') as f:
+        ml_model = pickle.load(f)
+    with open('backend/scaler.pkl', 'rb') as f:
+        scaler = pickle.load(f)
+except:
+    ml_model = None
+    scaler = None
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    if not ml_model or not scaler:
+        return jsonify({'error': 'Model not loaded'}), 500
+    
+    data = request.json
+    machine_id = data.get('machine_id')
+    
+    if not machine_id:
+        return jsonify({'error': 'machine_id required'}), 400
+    
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT sr.value FROM sensor_readings sr
+            JOIN sensors s ON sr.sensor_id = s.id
+            WHERE s.machine_id = ?
+            ORDER BY sr.timestamp DESC LIMIT 7
+        ''', (machine_id,))
+        values = [row[0] for row in cursor.fetchall()]
+        conn.close()
+        
+        if len(values) < 5:
+            return jsonify({'prediction': 'insufficient_data', 'confidence': 0}), 200
+        
+        window = values[-5:]
+        features = [
+            np.mean(window),
+            np.std(window),
+            np.min(window),
+            np.max(window),
+            values[-1] - values[-2] if len(values) > 1 else 0,
+            (values[-1] - values[-2]) - (values[-2] - values[-3]) if len(values) > 2 else 0,
+            values[-1]
+        ]
+        
+        features_scaled = scaler.transform([features])
+        prediction = ml_model.predict(features_scaled)[0]
+        confidence = ml_model.predict_proba(features_scaled)[0][1]
+        
+        return jsonify({
+            'machine_id': machine_id,
+            'prediction': 'high_risk' if prediction == 1 else 'low_risk',
+            'confidence': float(confidence),
+            'recommendation': 'Schedule maintenance within 7 days' if prediction == 1 else 'Continue normal operation'
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
